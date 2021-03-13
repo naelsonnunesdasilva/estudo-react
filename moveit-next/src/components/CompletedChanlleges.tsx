@@ -1,5 +1,5 @@
 import styles from '../styles/components/CompletedChallenges.module.css';
-import { useContext } from '../contexts/node_modules/@types/react';
+import { useContext } from 'react';
 import { ChallengeContext } from '../contexts/ChallengesContext';
 
 export function CompletedChanlleges() {
