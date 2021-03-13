@@ -17,7 +17,11 @@
     gap: 6.25rem;
     align-content: center;
 }
-/* 
-.leftContainer{
 
-} */
+@media (max-width: 768px)
+{
+    .container section{
+        grid-template-columns: 1fr;
+        padding: 50px 0px;
+    }
+}

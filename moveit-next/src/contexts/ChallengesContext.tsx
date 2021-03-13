@@ -45,6 +45,7 @@ export function ChallengesProvider({
     const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
     useEffect(() => {
+        navigator.serviceWorker.register('sw.js');
         Notification.requestPermission();
     }, [])
 
@@ -59,7 +60,7 @@ export function ChallengesProvider({
         setIsLevelUpModalOpen(true);
     }
 
-    function closeLevelUpModal(){
+    function closeLevelUpModal() {
         setIsLevelUpModalOpen(false);
     }
 
@@ -71,11 +72,22 @@ export function ChallengesProvider({
 
         new Audio('/notification.mp3').play();
 
-        if (Notification.permission === 'granted') {
-            new Notification('Novo desafio 🎉', {
-                body: `Valendo ${challenge.amount} xp`
-            });
+        if (!window.Notification || !Notification.requestPermission) {
+            return false;
+
+        } else if (Notification.permission === 'granted') {
+
+            try {
+                new Notification('Novo desafio 🎉', {
+                    body: `Valendo ${challenge.amount} xp`
+                });
+            } catch (e) {
+                console.log('Erro:', e);
+            }
+
         }
+
+        // ServiceWorkerRegistration.showNotification();
     }
 
     function resetChallenge() {
