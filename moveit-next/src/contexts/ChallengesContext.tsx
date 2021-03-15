@@ -87,7 +87,6 @@ export function ChallengesProvider({
 
         }
 
-        // ServiceWorkerRegistration.showNotification();
     }
 
     function resetChallenge() {

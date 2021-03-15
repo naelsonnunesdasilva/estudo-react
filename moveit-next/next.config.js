@@ -1,7 +1,7 @@
-const withPWA = require('next-pwa')
- 
-module.exports = withPWA({
+import withPWA from 'next-pwa';
+
+export default withPWA({
     pwa: {
         dest: 'public'
     }
-})
+});
